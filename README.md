@@ -46,7 +46,7 @@ Other useful utility functions are base_url() and site_url(). These are useful f
 
 **What Next?**
 
-The util.php is a work in progress and will keep increasing with time. The idea is really that simple, PHP was originally built as a language that employed functions to manage its workflow (to a great extent, it still does). minimal-mvc is also in the same spirit. If your app increases in complexity or scale, you can put the controller logic inside additional script modules and require them in index.php like this:
+The util.php is a work in progress and will keep increasing with time. The idea is really that simple, PHP was originally built as a language that employed functions to manage its workflow (to a great extent, it still does), and minimal-mvc is also in the same spirit. If your app increases in complexity or scale, you can put the controller logic inside additional script modules and require them in index.php like this:
 
 ```php
 Router::get('/foo', function(){
