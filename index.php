@@ -25,7 +25,7 @@ Router::get('/', function(){
 
 Router::get('/arcane*', function(){
 	echo "<p>Pattern Match!</p>";
-	echo "<p>The uri segments are :".print_r(get_segments(),true)."</p>";
+	echo "<p>The uri segments are :".print_r(uri_segments(),true)."</p>";
 });
 
 Router::get("/testmvc", function(){
