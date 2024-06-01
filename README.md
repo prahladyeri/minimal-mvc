@@ -3,6 +3,7 @@
 [![patreon](https://img.shields.io/badge/Patreon-brown.svg?logo=patreon)](https://www.patreon.com/prahladyeri)
 [![paypal](https://img.shields.io/badge/PayPal-blue.svg?logo=paypal)](https://paypal.me/prahladyeri)
 [![follow](https://img.shields.io/twitter/follow/prahladyeri.svg?style=social)](https://twitter.com/prahladyeri)
+
 ```bash
 minimal-mvc is a humble attempt to de-cruft and de-bloat the scene of web frameworks. It's a specialized micro framework for following use cases or traits:
 
