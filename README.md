@@ -4,7 +4,6 @@
 [![paypal](https://img.shields.io/badge/PayPal-blue.svg?logo=paypal)](https://paypal.me/prahladyeri)
 [![follow](https://img.shields.io/twitter/follow/prahladyeri.svg?style=social)](https://twitter.com/prahladyeri)
 
-```bash
 minimal-mvc is a humble attempt to de-cruft and de-bloat the scene of web frameworks. It's a specialized micro framework for following use cases or traits:
 
 1. Freelancers, students and hobbyists who want to experiment with PHP.
@@ -19,21 +18,27 @@ minimal-mvc is a humble attempt to de-cruft and de-bloat the scene of web framew
 
 Just download this repo and use it to prototype your app. The core consists of only two PHP files which are required in index.php:
 
+```bash
 - core/router.php - For routing capabilities.
 - core/util.php - For generic utility functions.
+```
 
 In index.php, you can handle basic routing easily like this:
 
+```php
 Router::get('/', function(){
 	echo "<h1>It Works!</h1>";
 });
+```
 
 For views/templates, you can use the load_template() utility function as shown in this built-in example:
 
+```php
 Router::get("/testmvc", function(){
 	$vars = ["foo"=>'bar', 'title'=>'Testing'];
 	load_template('templates/dummy.php', $vars);
 });
+```
 
 The template system works on a stereotype base template (templates/base.php) which can include all your frontend details like link and script tags to bootstrap, react, jquery, etc. And there will be a placeholder called $__contentfile for the "child template" like dummy.php here in which all variables you pass ($vars in this example) will be extrapolated for you to use. Note that we will not use any specific template language like jinja or twig as PHP itself is a template language.
 
@@ -45,10 +50,10 @@ Other useful utility functions are base_url() and site_url(). These are useful f
 
 The util.php is a work in progress and will keep increasing with time. The idea is really that simple, PHP was originally built as a language that employed functions to manage its workflow (to a great extent, it still does). minimal-mvc is also in the same spirit. If your app increases in complexity or scale, you can put the controller logic inside additional script modules and require them in index.php like this:
 
+```php
 Router::get('/foo', function(){
 	require_once("controllers/foo_controller.php");
 });
-
-It's upto you whether you name that folder controllers or something else, whether you use classes inside the script or plain old functions. As I said, there will be no hand holding!
 ```
 
+It's upto you whether you name that folder controllers or something else, whether you use classes inside the script or plain old functions. As I said, there will be no hand holding!
