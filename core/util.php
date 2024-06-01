@@ -1,4 +1,12 @@
 <?php
+/**
+* util.php
+* 
+* Common Utilities
+* 
+* @author Prahlad Yeri<prahladyeri@yahoo.com>
+* @license GPL v3
+*/
 
 function load_template($fname, $vars) {
 	extract($vars);

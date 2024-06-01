@@ -1,3 +1,13 @@
+<?php
+/**
+* base.php
+* 
+* Base template
+* 
+* @author Prahlad Yeri<prahladyeri@yahoo.com>
+* @license GPL v3
+*/
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>

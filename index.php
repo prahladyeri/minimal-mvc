@@ -1,4 +1,14 @@
 <?php
+/**
+* index.php
+* 
+* App entry point
+* 
+* @author Prahlad Yeri<prahladyeri@yahoo.com>
+* @license GPL v3
+*/
+
+
 
 require('core/router.php');
 require('core/util.php');

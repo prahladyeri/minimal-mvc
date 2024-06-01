@@ -1,4 +1,12 @@
 <?php
+/**
+* router.php
+* 
+* Routing capabilities
+* 
+* @author Prahlad Yeri<prahladyeri@yahoo.com>
+* @license GPL v3
+*/
 
 function site_url($uri = "") {
 	$idx = (Router::$index_file==''?'':Router::$index_file.'/');
