@@ -14,15 +14,15 @@ function load_template($fname, $vars) {
 	require("templates/base.php");
 }
 
-//returns the url segment like "main" in case of get_segment(2) where uri is "index/main"
-function get_segment($idx) {
+//returns the url segment like "main" in case of uri_segment(2) where uri is "index/main"
+function uri_segment($idx) {
 	$uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 	$parts = explode('/', $uri);
 	//print_r($parts);
 	return $parts[$idx];
 }
 
-function get_segments() {
+function uri_segments() {
 	$uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 	return explode('/', $uri);
 }

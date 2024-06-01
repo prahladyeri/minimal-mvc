@@ -43,7 +43,7 @@ You can also use the `*` wildcard at the end to handle arbitrary routes:
 ```php
 Router::get('/arcane*', function(){
 	echo "<p>Pattern Match!</p>";
-	echo "<p>The uri segments are :".print_r(get_segments(),true)."</p>";
+	echo "<p>The uri segments are :".print_r(uri_segments(),true)."</p>";
 });
 
 ```
@@ -54,10 +54,10 @@ In addition to that, the framework also includes a static directory to store you
 
 Other useful utility functions are `base_url()` and `site_url()`. These are useful for resolving full url paths when your app is hosted inside a sub folder like `http://<some-domain>/subfolder` or when you want to resolve the actual url from a route such as "foo/bar". For almost everything else under the Sun, PHP is more than capable of handling whatever you throw at it!
 
-The routing capability provided here is very basic, any further implementation will be a DIY. Other frameworks provide fancy routes like `/foo/bar/{slug}` and `/article/{locale}` which appears mind-blowing initially. But once you consider that PHP provides you a built-in called `$_SERVER['REQUEST_URI']` which you can parse yourself inside the `/foo/bar/` or `/article/` routes to get these yourself, that magic starts waning! To make things a bit easier, this framework provides you the shortcut utility function `get_segment()` to determine these so called fancy variables:
+The routing capability provided here is very basic, any further implementation will be a DIY. Other frameworks provide fancy routes like `/foo/bar/{slug}` and `/article/{locale}` which appears mind-blowing initially. But once you consider that PHP provides you a built-in called `$_SERVER['REQUEST_URI']` which you can parse yourself inside the `/foo/bar/` or `/article/` routes to get these yourself, that magic starts waning! To make things a bit easier, this framework provides you the shortcut utility function `uri_segment()` to determine these so called fancy variables:
 
 ```php
-echo get_segment(3); // outputs the {slug} value or third segment in the URI
+echo uri_segment(3); // outputs the {slug} value or third segment in the URI
 ```
 
 **What Next?**
