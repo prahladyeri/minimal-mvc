@@ -16,7 +16,7 @@
 
 **How to use minimal-mvc framework:**
 
-Just download this repo and use it to prototype your app. The core consists of only two PHP files which are required in index.php:
+Just download this repo and use it to prototype your app. The core consists of only two PHP scripts which are required in index.php:
 
 ```bash
 - core/router.php - For routing capabilities.
