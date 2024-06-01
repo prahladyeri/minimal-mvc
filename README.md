@@ -44,6 +44,12 @@ In addition to that, the framework also includes a static directory to store you
 
 Other useful utility functions are base_url() and site_url(). These are useful functions for resolving full url paths when your app is hosted inside a sub folder like `http://<some-domain>/subfolder` or when you want to resolve the path based on a URI route such as "foo/bar". For almost everything else under the Sun, PHP is more than capable of handling whatever you throw at it!
 
+The routing capability provided here is very basic, any further implementation will be a DIY. Other frameworks provide fancy routes like `/foo/bar/{slug}` and `/article/{locale}` which appears mind-blowing initially. But once you consider that PHP provides you a built-in called `$_SERVER['REQUEST_URI']` which you can parse yourself inside the /article/ route, that magic starts waning! To make things easier, this framework provides you the shortcut utility function `get_segment()` to determine these magic variables!
+
+```php
+echo get_segment(3); // outputs the {slug} value or third segment in the URI
+```
+
 **What Next?**
 
 The util.php is a work in progress and will keep improving with time. The idea is really that simple, PHP was originally built as a language that employed functions to manage its workflow (to a great extent, it still does), and minimal-mvc is also in the same spirit. If your app increases in complexity or scale, you can put the controller logic inside additional script modules and require them in index.php like this:
