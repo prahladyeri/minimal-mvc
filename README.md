@@ -8,7 +8,7 @@
 
 1. Freelancers, students and hobbyists who want to experiment with PHP.
 2. Your app has simple CRUD workflow and just needs basic routing and templating capabilities of PHP.
-3. Your app is mostly frontend heavy (SPA, etc.) and use PHP for very basic features like routing.
+3. Your app is mostly frontend heavy (SPA, etc.) and uses PHP for very basic features like routing.
 4. You are developing a REST API.
 5. You find it unnecessary to optimize for hypothetical futuristic scaling.
 6. Not a huge fan of applying OOP everywhere.
