@@ -38,7 +38,7 @@ Router::get("/testmvc", function() {
 });
 ```
 
-You can also use the `*` wildcard at the end to create arbitrary routes:
+You can also use the `*` wildcard at the end to handle arbitrary routes:
 
 ```php
 Router::get('/arcane*', function(){
