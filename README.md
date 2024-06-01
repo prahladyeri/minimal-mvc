@@ -4,7 +4,7 @@
 [![paypal](https://img.shields.io/badge/PayPal-blue.svg?logo=paypal)](https://paypal.me/prahladyeri)
 [![follow](https://img.shields.io/twitter/follow/prahladyeri.svg?style=social)](https://twitter.com/prahladyeri)
 
-minimal-mvc is a humble attempt to de-cruft and de-bloat the scene of web frameworks. It's a specialized micro framework for following use cases or traits:
+**minimal-mvc** is a humble attempt to de-cruft and de-bloat the scene of web frameworks. It's a specialized micro framework for following use cases or traits:
 
 1. Freelancers, students and hobbyists who want to experiment with PHP.
 2. Your app has simple CRUD workflow and just needs basic routing and templating capabilities of PHP.
