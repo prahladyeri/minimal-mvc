@@ -42,7 +42,7 @@ The template system works on a stereotype base template (templates/base.php) whi
 
 In addition to that, the framework also includes a static directory to store your static files like stylesheets, ECMA scripts, images, etc.
 
-Other useful utility functions are base_url() and site_url(). These are useful functions for resolving full url paths when your app is hosted inside a sub folder like http://<some-domain>/subfolder or when you want to resolve the path based on a URI route such as "foo/bar". For almost everything else under the Sun, PHP is more than capable of handling whatever you throw at it!
+Other useful utility functions are base_url() and site_url(). These are useful functions for resolving full url paths when your app is hosted inside a sub folder like `http://<some-domain>/subfolder` or when you want to resolve the path based on a URI route such as "foo/bar". For almost everything else under the Sun, PHP is more than capable of handling whatever you throw at it!
 
 **What Next?**
 
