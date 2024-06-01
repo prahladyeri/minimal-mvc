@@ -24,7 +24,7 @@ Just download this repo and use it to prototype your app. The core consists of o
 In index.php, you can handle basic routing easily like this:
 
 ```php
-Router::get('/', function(){
+Router::get('/', function() {
 	echo "<h1>It Works!</h1>";
 });
 ```
@@ -32,7 +32,7 @@ Router::get('/', function(){
 For views/templates, you can use the load_template() utility function as shown in this built-in example:
 
 ```php
-Router::get("/testmvc", function(){
+Router::get("/testmvc", function() {
 	$vars = ["foo"=>'bar', 'title'=>'Testing'];
 	load_template('templates/dummy.php', $vars);
 });
@@ -49,7 +49,7 @@ Other useful utility functions are base_url() and site_url(). These are useful f
 The util.php is a work in progress and will keep increasing with time. The idea is really that simple, PHP was originally built as a language that employed functions to manage its workflow (to a great extent, it still does), and minimal-mvc is also in the same spirit. If your app increases in complexity or scale, you can put the controller logic inside additional script modules and require them in index.php like this:
 
 ```php
-Router::get('/foo', function(){
+Router::get('/foo', function() {
 	require_once("controllers/foo_controller.php");
 });
 ```
