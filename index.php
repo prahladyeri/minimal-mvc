@@ -23,6 +23,11 @@ Router::get('/', function(){
 	echo "<h1>It Works!</h1>";
 });
 
+Router::get('/arcane*', function(){
+	echo "<p>Pattern Match!</p>";
+	echo "<p>The uri segments are :".print_r(get_segments(),true)."</p>";
+});
+
 Router::get("/testmvc", function(){
 	$vars = ["foo"=>'bar', 'title'=>'Testing'];
 	load_template('templates/dummy.php', $vars);

@@ -21,3 +21,8 @@ function get_segment($idx) {
 	//print_r($parts);
 	return $parts[$idx];
 }
+
+function get_segments() {
+	$uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+	return explode('/', $uri);
+}

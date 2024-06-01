@@ -38,6 +38,16 @@ Router::get("/testmvc", function() {
 });
 ```
 
+You can also use the `*` wildcard at the end to create arbitrary routes:
+
+```php
+Router::get('/arcane*', function(){
+	echo "<p>Pattern Match!</p>";
+	echo "<p>The uri segments are :".print_r(get_segments(),true)."</p>";
+});
+
+```
+
 The template system works on a stereotype base template (templates/base.php) which can include all your frontend details like link and script tags to bootstrap, react, jquery, etc. And there will be a placeholder called $__contentfile for the "child template" like dummy.php here in which all variables you pass ($vars in this example) will be extrapolated for you to use. Note that we will not use any specific template language like jinja or twig as PHP itself is a template language.
 
 In addition to that, the framework also includes a static directory to store your static files like stylesheets, ECMA scripts, images, etc.
