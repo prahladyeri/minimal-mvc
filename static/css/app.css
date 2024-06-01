@@ -1,0 +1,17 @@
+div.main
+{
+	font-family: courier;
+	font-size: 21px;
+	background-color: white;
+	margin: 75px 200px 75px 200px;
+	padding: 12px 10px 12px 10px;
+	border: 2px solid black;
+	border-radius: 20px;
+	min-height: 400px;
+}
+
+body {
+	background-color: lightgrey;
+}
+
+.strong {font-weight: bold;}
