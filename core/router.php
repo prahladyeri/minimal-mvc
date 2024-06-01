@@ -50,10 +50,10 @@ class Router {
 			if ($route === $uri) {
 				return self::execute($action);
 			}
-			else if (substr($route, -1)=='*') {
+			else if (substr($route, -1)==='*') {
 				//pattern match
 				$start = substr($route, 0, -1);
-				if (strpos($uri, $start)==0) {
+				if (strpos($uri, $start)===0) {
 					return self::execute($action); 
 				}
 				
