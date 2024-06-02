@@ -4,14 +4,14 @@
 * 
 * App entry point
 * 
-* @author Prahlad Yeri<prahladyeri@yahoo.com>
+* @author Prahlad Yeri <prahladyeri@yahoo.com>
 * @license GPL v3
 */
 
-
-
 require('core/router.php');
 require('core/util.php');
+
+//@todo: initialize constants and vars
 
 //for easy access to your static paths with base_url()
 //Router::$base_url = "http://localhost:8000/"; 
@@ -19,7 +19,13 @@ require('core/util.php');
 //set blank if you rewrite index.php in .htaccess
 //Router::$index_file = 'index.php'; 
 
-Router::get('/', function(){
+const VERSION = "0.1";
+
+//@todo: initialize database
+
+$dbh = new PDO("sqlite:comment-monk.db");
+
+Router::get('/', function() {
 	echo "<h1>It Works!</h1>";
 });
 
