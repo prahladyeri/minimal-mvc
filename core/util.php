@@ -8,8 +8,15 @@
 * @license GPL v3
 */
 
-/* DATABASE UTILITIES */
+/* MISC UTILITIES */
+function default_vars($module) {
+	return ["module"=>$module,
+		'errors'=>[],
+		"messages"=>[],
+	];
+}
 
+/* DATABASE UTILITIES */
 function clean_sql($sql) {
 	$parts = explode(";", $sql);
 	$rval = "";
