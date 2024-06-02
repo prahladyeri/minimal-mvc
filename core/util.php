@@ -40,11 +40,13 @@ function load_template($fname, $vars) {
 //returns the url segment like "main" in case of uri_segment(2) where uri is "index/main"
 function uri_segment($idx) {
 	$uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+	if (strpos($uri, "/index.php") === 0) {
+		$uri = substr($uri, 10);
+	}
 	$parts = explode('/', $uri);
 	//print_r($parts);
 	return $parts[$idx];
 }
-
 function uri_segments() {
 	$uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 	return explode('/', $uri);

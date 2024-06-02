@@ -20,6 +20,8 @@ function base_url() {
 class Router {
 	public static $base_url = null;
 	public static $index_file = 'index.php';
+	public static $pre_dispatch = null;
+	
 	private static $routes = array();
 	
 	public static function addRoute($method, $route, $action) {
@@ -38,6 +40,7 @@ class Router {
 		$method = $_SERVER['REQUEST_METHOD'];
 		$uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 		if (self::$base_url === null) { //set it automatically
+			//echo "setting base_url automatically";
 			self::$base_url = "http://" . $_SERVER['HTTP_HOST'];
 			self::$base_url .= str_replace(basename($_SERVER['SCRIPT_NAME']),"",$_SERVER['SCRIPT_NAME']);
 			error_log("index file is " . self::$index_file);
@@ -46,7 +49,12 @@ class Router {
 		if (strpos($uri, "/index.php") === 0) {
 			$uri = substr($uri, 10);
 		}
+		if (is_callable(self::$pre_dispatch)) {
+			$call = self::$pre_dispatch; 
+			$call();
+		}
 		foreach (self::$routes[$method] as $route => $action) {
+			//echo "proc:$route::$uri<br>";
 			if ($route === $uri) {
 				return self::execute($action);
 			}

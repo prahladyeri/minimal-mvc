@@ -25,6 +25,11 @@ const VERSION = "0.1";
 
 $dbh = new PDO("sqlite:minimal-mvc.db");
 
+Router::$pre_dispatch = function() {
+	//check install and any other common initialization
+	global $dbh;
+}
+
 Router::get('/', function() {
 	echo "<h1>It Works!</h1>";
 });
