@@ -36,6 +36,10 @@ class Router {
 		self::addRoute('POST', $route, $action);
 	}
 	
+	public static function put($route, $action) {
+		self::addRoute('PUT', $route, $action);
+	}
+	
 	public static function dispatch() {
 		$method = $_SERVER['REQUEST_METHOD'];
 		$uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
@@ -56,6 +60,7 @@ class Router {
 			$uri = substr($uri, strlen($turi));
 			//echo "uri:$uri<br>";
 		}
+		if ($uri=="") $uri = "/";
 		if (is_callable(self::$pre_dispatch)) {
 			$call = self::$pre_dispatch; 
 			$call();
