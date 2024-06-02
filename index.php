@@ -23,7 +23,7 @@ const VERSION = "0.1";
 
 //@todo: initialize database
 
-$dbh = new PDO("sqlite:comment-monk.db");
+$dbh = new PDO("sqlite:minimal-mvc.db");
 
 Router::get('/', function() {
 	echo "<h1>It Works!</h1>";
