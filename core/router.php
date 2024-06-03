@@ -43,9 +43,6 @@ class Router {
 	public static function dispatch() {
 		$method = $_SERVER['REQUEST_METHOD'];
 		$uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
-		if (strpos($uri, "/index.php") === 0) {
-			$uri = substr($uri, 10);
-		}
 		if (self::$base_url === null) { //set it automatically
 			//echo "setting base_url automatically";
 			self::$base_url = "http://" . $_SERVER['HTTP_HOST'];
@@ -59,6 +56,9 @@ class Router {
 			//echo "uri:$uri<br>turi$turi<br>";
 			$uri = substr($uri, strlen($turi));
 			//echo "uri:$uri<br>";
+		}
+		if (strpos($uri, "/index.php") === 0) {
+			$uri = substr($uri, 10);
 		}
 		if ($uri=="") $uri = "/";
 		if (is_callable(self::$pre_dispatch)) {

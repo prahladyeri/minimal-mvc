@@ -52,9 +52,13 @@ function uri_segment($idx) {
 	}
 	$parts = explode('/', $uri);
 	//print_r($parts);
+	if ($idx<0) $idx = count($parts)+$idx;
 	return $parts[$idx];
 }
 function uri_segments() {
 	$uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+	if (strpos($uri, "/index.php") === 0) {
+		$uri = substr($uri, 10);
+	}
 	return explode('/', $uri);
 }
