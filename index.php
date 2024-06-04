@@ -10,6 +10,7 @@
 
 require('core/router.php');
 require('core/util.php');
+session_start();
 
 //@todo: initialize constants and vars
 
