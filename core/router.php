@@ -8,6 +8,8 @@
 * @license LGPL v2.1
 */
 
+const MMVC_VER = "1.0";
+
 function site_url($uri = "") {
 	$idx = (Router::$index_file==''?'':Router::$index_file.'/');
 	return base_url() . $idx . $uri;
