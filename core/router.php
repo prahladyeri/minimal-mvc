@@ -5,7 +5,7 @@
 * Routing capabilities
 * 
 * @author Prahlad Yeri <prahladyeri@yahoo.com>
-* @license GPL v3
+* @license LGPL v2.1
 */
 
 function site_url($uri = "") {
