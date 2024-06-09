@@ -23,20 +23,11 @@ require('core/router.php');  # For routing capabilities.
 require('core/util.php'); # For generic utility functions.
 ```
 
-In your index.php, you can handle basic routing easily like this:
+You can handle basic routing easily like this:
 
 ```php
 Router::get('/', function() {
 	echo "<h1>It Works!</h1>";
-});
-```
-
-For views/templates, you can use the load_template() utility function as shown in this built-in example:
-
-```php
-Router::get("/testmvc", function() {
-	$vars = ["foo"=>'bar', 'title'=>'Testing'];
-	load_template('templates/dummy.php', $vars);
 });
 ```
 
@@ -50,9 +41,18 @@ Router::get('/api*', function(){
 
 ```
 
-The template system works on a stereotype base template `(templates/base.php)` which can include all the frontend details like link and script tags to bootstrap, react, jquery, etc. And it should contain a placeholder called `$__contentfile` for the contents of "child template" (such as `dummy.php` in above example) which is derived or inherited from the base template and directly referred in the `load_template()` utility function. In that child template, all variables you pass ($vars in this example) will be extrapolated for you to use. Note that we will not use any specific template language like jinja or twig as PHP itself is a template engine.
+For views/templates, you can use the `load_template()` utility function:
 
-In addition to that, the framework root should also include a static directory to store your static files like stylesheets, ECMA scripts, images, etc. To see `minimal-mvc` live in action, you can study the folder structure of one of the projects that uses it such as [comment-monk](https://github.com/prahladyeri/comment-monk) project for reference.
+```php
+Router::get("/testmvc", function() {
+	$vars = ["foo"=>'bar', 'title'=>'Testing'];
+	load_template('templates/dummy.php', $vars);
+});
+```
+
+The template system works on a stereotype base template (`templates/base.php`) which can include all the frontend details like link and script tags to bootstrap, react, jquery, etc. And it should contain a placeholder called `$__contentfile` somewhere in the body section for the contents of "child template" (such as `dummy.php` in above example) which is derived or inherited from the base template and directly passed in the `load_template()` utility function. In that child template, all variables you pass ($vars in this example) will be extrapolated for you to use. Note that we will not use any specific template language like `jinja` or `twig` as PHP itself is a template engine.
+
+In addition to that, the framework root should also include a static directory to store your static files like stylesheets, ECMA scripts, images, etc. To see `minimal-mvc` live in action, you can study the source and folder structure of one of the projects that uses it such as [comment-monk](https://github.com/prahladyeri/comment-monk) project for reference.
 
 Other useful utility functions are `base_url()` and `site_url()`. These are useful for resolving full url paths when your app is hosted inside a sub folder like `http://<some-domain>/subfolder` or when you want to resolve the actual url from a route such as "foo/bar". For almost everything else under the Sun, PHP is more than capable of handling whatever you throw at it!
 
