@@ -5,7 +5,7 @@
 * Routing capabilities
 * 
 * @author Prahlad Yeri <prahladyeri@yahoo.com>
-* @license LGPL v2.1
+* @license MIT
 */
 
 const MMVC_VER = "1.0";
