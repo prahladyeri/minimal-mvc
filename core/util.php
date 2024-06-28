@@ -13,13 +13,36 @@ function get_method() {
 	return $_SERVER["REQUEST_METHOD"];
 }
 function default_vars($module) {
-	return ["module"=>$module,
+	$vars = ["module"=>$module,
 		'errors'=>[],
 		"messages"=>[],
 	];
+	//error_log("default_vars::SESSION" . print_r($_SESSION,true));
+	if (isset($_SESSION['message'])) {
+		$vars['messages'][] = $_SESSION['message'];
+		unset($_SESSION['message']);
+	}
+	if (isset($_SESSION['error'])) {
+		$vars['errors'][] = $_SESSION['error'];
+		unset($_SESSION['error']);
+	}
+	return $vars;
 }
 
 /* DATABASE UTILITIES */
+function exec_sql($dbh, $sql, $vals) {
+	$sth = $dbh->prepare($sql);
+	$sth->execute($vals);
+	return true;
+}
+function fetch_rows($dbh, $sql, $arr=null) {
+	$sth = $dbh->prepare($sql);
+	if ($arr)
+		$sth->execute($arr);
+	else
+		$sth->execute();
+	return $sth->fetchAll();
+}
 function build_insert_query($table, $values)
 {
 	$fields = [];
@@ -78,9 +101,11 @@ function clean_sql($sql) {
 
 function load_template($fname, $vars) {
 	extract($vars);
+	//echo "base_url::".base_url();
 	$__content_file = $fname;
 	require("templates/base.php");
 }
+
 function get_uri() {
 	//$bup = parse_url($base_url, PHP_URL_PATH);
 	$uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
@@ -90,7 +115,7 @@ function get_uri() {
 	return $uri;
 }
 
-//returns the url segment like "main" in case of uri_segment(2) where uri is "index/main"
+// @todo: trim any subdirs from the start of uri before parsing
 function uri_segment($idx) {
 	$uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 	if (strpos($uri, "/index.php") === 0) {
@@ -100,6 +125,18 @@ function uri_segment($idx) {
 	//print_r($parts);
 	if ($idx<0) $idx = count($parts)+$idx;
 	return $parts[$idx];
+}
+
+function uri_qs() {
+	$parts = parse_url($_SERVER['REQUEST_URI']);
+	if (isset($parts["query"])) {
+		$out = [];
+		parse_str($parts["query"], $out);
+		return $out;
+	}
+	else {
+		return null;
+	}
 }
 function uri_segments() {
 	$uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);

@@ -24,37 +24,38 @@ Just download this repo and use it to prototype your app. The core consists of o
 In `index.php`, you can handle basic routing easily like this:
 
 ```php
-Router::get('/', function() {
+function index() {
 	echo "<h1>It Works!</h1>";
-});
+};
 ```
 
-You can also use the `*` wildcard at the end to handle arbitrary routes:
+This is a very simple routing arrangement where each function inside index.php is a route with the `index()` function being the main or default route. For example, `/` routes to `index()`, `/api` routes to `api()`, etc.
 
 ```php
-Router::get('/api*', function(){
+function api() {
 	echo "<p>Pattern Match!</p>"; // http://localhost/api/foo
 	echo "<p>The uri segments are :".print_r(uri_segments(),true)."</p>";
-});
-
+};
 ```
+
+You can know the current HTTP method by `get_method()` utility function and get individual route segments using the `uri_segment()` utility function (such as 'api' in case of uri_segment(1) where route is `/api/foo/bar`). Similarly, `uri_segments()` returns an array consisting of all route segments.
 
 For views/templates, you can use the load_template() utility function as shown in this built-in example:
 
 ```php
-Router::get("/testmvc", function() {
+function testmvc() {
 	$vars = ["foo"=>'bar', 'title'=>'Testing'];
 	load_template('templates/dummy.php', $vars);
-});
+};
 ```
 
-The template system works on a stereotype base template (`templates/base.php`) which can include all the frontend details like link and script tags to bootstrap, react, jquery, etc. And it should contain a placeholder called `$__contentfile` somewhere in the body section for the contents of "child template" (such as the built-in `dummy.php`) which is derived or inherited from the base template and directly passed in the `load_template()` utility function. In that child template, all variables you pass ($vars in this example) will be extrapolated for you to use. Note that we will not use any specific template language like `jinja` or `twig` as PHP itself is a template engine.
+The template system works on a stereotype base template (`templates/base.php`) which can include all the frontend details like link and script tags to bootstrap, react, jquery, etc. And it should contain a placeholder called `$__contentfile` somewhere in the body section for the contents of "child template" (such as the built-in `templates/dummy.php` template) which is derived or inherited from the base template and directly passed in the `load_template()` utility function. In that child template, all variables you pass (`$vars` in this example) will be extrapolated for you to use. Note that we will not use any specific template language like `jinja` or `twig` as PHP itself is a template engine.
 
 In addition to that, the framework also includes a static directory to store your static files like stylesheets, ECMA scripts, images, etc.
 
-Other useful utility functions are `base_url()` and `site_url()`. These are useful for resolving full url paths when your app is hosted inside a sub folder like `http://<some-domain>/subfolder` or when you want to resolve the actual url from a route such as "foo/bar". For almost everything else under the Sun, PHP is more than capable of handling whatever you throw at it!
+Other useful utility functions are `base_url()` and `site_url()`. These are useful for resolving full url paths when your app is hosted inside a sub folder like `http://<some-domain>/subfolder` or when you want to resolve the actual url from a route such as "foo/bar". For almost everything else under the Sun, PHP is more than capable of handling whatever you throw at it.
 
-The routing capability provided here is very basic, any further implementation will be a DIY. Other frameworks provide fancy routes like `/foo/bar/{slug}` and `/article/{locale}` which appears mind-blowing initially. But once you consider that PHP provides you a built-in called `$_SERVER['REQUEST_URI']` which you can parse yourself inside the `/foo/bar/` or `/article/` routes to get these yourself, that magic starts waning! To make things a bit easier, this framework provides you the shortcut utility function `uri_segment()` to determine these so called fancy variables:
+The routing capability provided here is very basic, any further implementation will be a DIY. Other frameworks provide fancy routes like `/foo/bar/{slug}` and `/article/{locale}` which appears mind-blowing initially. But once you consider that PHP provides you a built-in called `$_SERVER['REQUEST_URI']` which you can parse yourself inside the `/foo/bar/` or `/article/` routes to get these yourself, that magic starts waning! To make things a bit easier, this framework provides you the shortcut utility function `uri_segment()` as mentioned earlier to determine these so called fancy variables:
 
 ```php
 echo uri_segment(3); // outputs the {slug} value or third segment in the URI
@@ -65,9 +66,9 @@ echo uri_segment(3); // outputs the {slug} value or third segment in the URI
 The util.php is a work in progress and will keep improving with time. The idea is really that simple, PHP was originally built as a language that employed functions to manage its workflow (to a great extent, it still does), and minimal-mvc is also in the same spirit. If your app increases in complexity or scale, you can put the controller logic inside additional script modules and require them in index.php like this:
 
 ```php
-Router::get('/foo', function() {
+function foo() {
 	require_once("controllers/foo_controller.php");
-});
+};
 ```
 
 It's upto you whether you name that folder controllers or something else, whether you use classes inside the script or plain old functions. As I said, there will be no hand holding!
