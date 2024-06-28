@@ -115,18 +115,6 @@ function get_uri() {
 	return $uri;
 }
 
-// @todo: trim any subdirs from the start of uri before parsing
-function uri_segment($idx) {
-	$uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
-	if (strpos($uri, "/index.php") === 0) {
-		$uri = substr($uri, 10);
-	}
-	$parts = explode('/', $uri);
-	//print_r($parts);
-	if ($idx<0) $idx = count($parts)+$idx;
-	return $parts[$idx];
-}
-
 function uri_qs() {
 	$parts = parse_url($_SERVER['REQUEST_URI']);
 	if (isset($parts["query"])) {
@@ -138,8 +126,28 @@ function uri_qs() {
 		return null;
 	}
 }
+
+function uri_segment($idx) {
+	$uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+	$buri = parse_url(base_url(), PHP_URL_PATH);
+	error_log("full-uri::$uri");
+	error_log("buri::$buri");
+	$uri = substr($uri, strlen($buri)-1);
+	error_log("proper-uri::$uri");
+	if (strpos($uri, "/index.php") === 0) {
+		$uri = substr($uri, 10);
+	}
+	$parts = explode('/', $uri);
+	//print_r($parts);
+	if ($idx<0) $idx = count($parts)+$idx;
+	return $parts[$idx];
+}
+
+
 function uri_segments() {
 	$uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+	$buri = parse_url(base_url(), PHP_URL_PATH);
+	$uri = substr($uri, strlen($buri)-1);
 	if (strpos($uri, "/index.php") === 0) {
 		$uri = substr($uri, 10);
 	}

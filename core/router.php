@@ -8,6 +8,7 @@
 * @license MIT
 */
 const MMVC_VER = "1.0";
+define('APP_PATH', dirname(__DIR__ ));
 $base_url = null;
 $index_file = 'index.php';
 //$routes = array();
@@ -50,7 +51,8 @@ function dispatch($pre_dispatch_func) {
 		$call();
 	}
 	//echo 'uri_segment[0]::' . uri_segment(1);
-	if ($uri == '/' && function_exists('index')) {
+	//error_log( "uri::$uri");
+	if (uri_segment(1) == '' && function_exists('index')) {
 		index();
 	} else if (function_exists(uri_segment(1))) {
 		$func = uri_segment(1);
