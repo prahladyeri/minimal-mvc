@@ -12,7 +12,7 @@
 <html lang="en">
 <head>
 	<title><?=$title?></title>
-	<link rel="stylesheet" href="<?=base_url()?>static/css/app.css?v=1">
+	<link rel="stylesheet" href="<?=base_url()?>static/css/app.css?v=<?=VERSION?>">
 </head>
 <body>
 <div class='main'>

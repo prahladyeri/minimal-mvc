@@ -38,7 +38,7 @@ function api() {
 };
 ```
 
-You can know the current HTTP method by `get_method()` utility function and get individual route segments using the `uri_segment()` utility function (such as 'api' in case of uri_segment(1) where route is `/api/foo/bar`). Similarly, `uri_segments()` returns an array consisting of all route segments.
+You can know the current HTTP method by `get_method()` utility function and get individual route segments using the `uri_segment()` utility function (such as 'api' in case of `uri_segment(1)` where route is `/api/foo/bar`). Similarly, `uri_segments()` returns an array consisting of all route segments.
 
 For views/templates, you can use the load_template() utility function as shown in this built-in example:
 

@@ -7,7 +7,7 @@
 * @author Prahlad Yeri <prahladyeri@yahoo.com>
 * @license MIT
 */
-
+//@todo: add docstrings for functions
 require('core/router.php');
 require('core/util.php');
 session_start();

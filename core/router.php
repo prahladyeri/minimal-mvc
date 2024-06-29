@@ -52,6 +52,8 @@ function dispatch($pre_dispatch_func) {
 	}
 	//echo 'uri_segment[0]::' . uri_segment(1);
 	//error_log( "uri::$uri");
+	//@todo: ensure a way of limiting total segments, lenghty urls like /foo/bar/baz/xyz/1234
+	// ideal way is to let functions have their parameters, then pass it on to them after a count validation.
 	if (uri_segment(1) == '' && function_exists('index')) {
 		index();
 	} else if (function_exists(uri_segment(1))) {
